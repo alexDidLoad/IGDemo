@@ -24,3 +24,9 @@ enum SFSymbols {
     static let bookmark     = UIImage(systemName: "bookmark")!
     static let ellipsis     = UIImage(systemName: "ellipsis")!
 }
+
+enum ImageAssets {
+    
+    static let instagramLogo = UIImage(named: "Instagram")
+    static let addPhoto      = UIImage(named: "addPhoto")
+}

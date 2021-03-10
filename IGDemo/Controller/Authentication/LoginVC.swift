@@ -11,31 +11,120 @@ class LoginVC: UIViewController {
     
     //MARK: - UIComponents
     
+    private let iconImage: UIImageView = {
+        let iv         = UIImageView(image: ImageAssets.instagramLogo)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    private let emailTextField    = CustomTextField(placeholder: "Email", isSecureEntry: false)
+    private let passwordTextField = CustomTextField(placeholder: "Password", isSecureEntry: true)
+    
+    private let loginButton: UIButton = {
+        let button = AuthButton(withTitle: "Log in")
+        button.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    private let forgotPasswordButton: UIButton = {
+        let button = AttributedTitleButton(title: "Forgot your password? ", boldedTitle: "Get help signing in")
+        button.addTarget(self, action: #selector(didTapForgotPassword), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    private let dontHaveAccountButton: UIButton = {
+        let button = AttributedTitleButton(title: "Don't have an account?  ", boldedTitle: "Sign up")
+        button.addTarget(self, action: #selector(didTapDontHaveAccount), for: .touchUpInside)
+        return button
+    }()
+    
     //MARK: - Properties
+    
+    private var viewModel = LoginViewModel()
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       configureUI()
+        configureUI()
+        configureNotificationObservers()
     }
     
     //MARK: - Helpers
     
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    
     private func configureUI() {
-        view.backgroundColor = .white
+        configureGradientLayer()
+        
+        navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isHidden = true
         
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.bounds
-    
-    
+        view.addSubview(iconImage)
+        iconImage.centerX(inView: view)
+        iconImage.setDimensions(height: 80, width: 120)
+        iconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                         paddingTop: 32)
+        
+        let stack     = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton, forgotPasswordButton])
+        stack.axis    = .vertical
+        stack.spacing = 20
+        
+        view.addSubview(stack)
+        stack.anchor(top: iconImage.bottomAnchor,
+                     leading: view.leadingAnchor,
+                     trailing: view.trailingAnchor,
+                     paddingTop: 32,
+                     paddingLeading: 32,
+                     paddingTrailing: 32)
+        
+        view.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.centerX(inView: view)
+        dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
     
     //MARK: - Selectors
+    
+    @objc private func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        updateForm()
+    }
+    
+    
+    @objc private func didTapLogin() {
+        print("didTapLogin")
+    }
+    
+    
+    @objc private func didTapForgotPassword() {
+        print("didTapForgotPassword")
+    }
+    
+    
+    @objc private func didTapDontHaveAccount() {
+        let destVC = RegisterVC()
+        navigationController?.pushViewController(destVC, animated: true)
+    }
+}
+
+//MARK: - FormViewModel
+
+extension LoginVC: FormViewModel {
+    
+    func updateForm() {
+        loginButton.isEnabled = viewModel.formIsValid
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+    }
     
 }

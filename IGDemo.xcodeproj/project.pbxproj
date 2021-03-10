@@ -22,6 +22,11 @@
 		1178698725F759B300599FAC /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178698625F759B300599FAC /* FeedCell.swift */; };
 		1178698A25F76E1A00599FAC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178698925F76E1A00599FAC /* LoginVC.swift */; };
 		1178698D25F76E2B00599FAC /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178698C25F76E2B00599FAC /* RegisterVC.swift */; };
+		1178699325F85A5D00599FAC /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178699225F85A5D00599FAC /* CustomTextField.swift */; };
+		1178699625F8624F00599FAC /* AttributedTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178699525F8624F00599FAC /* AttributedTitleButton.swift */; };
+		1178699925F8643300599FAC /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178699825F8643300599FAC /* AuthButton.swift */; };
+		1178699F25F8669300599FAC /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178699E25F8669300599FAC /* UIViewController+Ext.swift */; };
+		117869A425F86C3D00599FAC /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117869A325F86C3D00599FAC /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,11 @@
 		1178698625F759B300599FAC /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1178698925F76E1A00599FAC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		1178698C25F76E2B00599FAC /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		1178699225F85A5D00599FAC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		1178699525F8624F00599FAC /* AttributedTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTitleButton.swift; sourceTree = "<group>"; };
+		1178699825F8643300599FAC /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		1178699E25F8669300599FAC /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		117869A325F86C3D00599FAC /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +102,9 @@
 		1178695925F73AF600599FAC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				1178696725F73D7F00599FAC /* UIView+Ext.swift */,
 				1178698325F7423B00599FAC /* Constants.swift */,
+				1178696725F73D7F00599FAC /* UIView+Ext.swift */,
+				1178699E25F8669300599FAC /* UIViewController+Ext.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -118,6 +129,7 @@
 		1178695C25F73AFD00599FAC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				117869A325F86C3D00599FAC /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -126,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				1178698625F759B300599FAC /* FeedCell.swift */,
+				1178699C25F864E300599FAC /* TextFields */,
+				1178699B25F864D200599FAC /* Buttons */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +170,23 @@
 				1178698C25F76E2B00599FAC /* RegisterVC.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		1178699B25F864D200599FAC /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				1178699525F8624F00599FAC /* AttributedTitleButton.swift */,
+				1178699825F8643300599FAC /* AuthButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		1178699C25F864E300599FAC /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				1178699225F85A5D00599FAC /* CustomTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,18 +258,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1178699325F85A5D00599FAC /* CustomTextField.swift in Sources */,
 				1178697225F73EC500599FAC /* SearchVC.swift in Sources */,
+				1178699F25F8669300599FAC /* UIViewController+Ext.swift in Sources */,
 				1178696825F73D7F00599FAC /* UIView+Ext.swift in Sources */,
 				1178698A25F76E1A00599FAC /* LoginVC.swift in Sources */,
 				1178696F25F73EBE00599FAC /* HomeVC.swift in Sources */,
+				117869A425F86C3D00599FAC /* AuthenticationViewModel.swift in Sources */,
 				1178697B25F73EE400599FAC /* ProfileVC.swift in Sources */,
 				1178698725F759B300599FAC /* FeedCell.swift in Sources */,
 				1178697525F73ED200599FAC /* ImageSelectorVC.swift in Sources */,
 				1178698425F7423B00599FAC /* Constants.swift in Sources */,
+				1178699925F8643300599FAC /* AuthButton.swift in Sources */,
 				1178694525F73A3B00599FAC /* AppDelegate.swift in Sources */,
 				1178694725F73A3B00599FAC /* SceneDelegate.swift in Sources */,
 				1178696325F73C0400599FAC /* MainTabBarController.swift in Sources */,
 				1178697825F73EDE00599FAC /* NotificationVC.swift in Sources */,
+				1178699625F8624F00599FAC /* AttributedTitleButton.swift in Sources */,
 				1178698D25F76E2B00599FAC /* RegisterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
