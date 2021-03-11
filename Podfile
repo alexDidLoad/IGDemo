@@ -6,5 +6,14 @@ target 'IGDemo' do
   use_frameworks!
 
   # Pods for IGDemo
-
+	pod 'Firebase/Core'
+	pod 'Firebase/Database'
+	pod 'Firebase/Firestore'
+	pod 'Firebase/Storage'
+	pod 'Firebase/Messaging'
+	pod 'Firebase/Auth'
+	pod 'ActiveLabel'
+	pod 'SDWebImage','~>4.4.2'
+	pod 'JGProgressHUD','~>2.0.3'
+	pod 'YPImagePicker'
 end

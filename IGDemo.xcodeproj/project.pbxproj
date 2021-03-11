@@ -28,6 +28,7 @@
 		1178699F25F8669300599FAC /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178699E25F8669300599FAC /* UIViewController+Ext.swift */; };
 		117869A425F86C3D00599FAC /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117869A325F86C3D00599FAC /* AuthenticationViewModel.swift */; };
 		117869A825FA1A8000599FAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 117869A725FA1A8000599FAC /* GoogleService-Info.plist */; };
+		D01B7A4E240ED5BDB889422A /* Pods_IGDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB68B4183257974102F5BBD /* Pods_IGDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,9 @@
 		1178699E25F8669300599FAC /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		117869A325F86C3D00599FAC /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		117869A725FA1A8000599FAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49F8D033874DB2D7AEEA8E85 /* Pods-IGDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGDemo.debug.xcconfig"; path = "Target Support Files/Pods-IGDemo/Pods-IGDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		4DB68B4183257974102F5BBD /* Pods_IGDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IGDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCB4E3C1EF0973B713C9ECA2 /* Pods-IGDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGDemo.release.xcconfig"; path = "Target Support Files/Pods-IGDemo/Pods-IGDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01B7A4E240ED5BDB889422A /* Pods_IGDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +77,8 @@
 			children = (
 				1178694325F73A3B00599FAC /* IGDemo */,
 				1178694225F73A3B00599FAC /* Products */,
+				9F0283163BE8F57AA7FFDBE3 /* Pods */,
+				18451322657817760491AEA1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +199,24 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		18451322657817760491AEA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DB68B4183257974102F5BBD /* Pods_IGDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F0283163BE8F57AA7FFDBE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49F8D033874DB2D7AEEA8E85 /* Pods-IGDemo.debug.xcconfig */,
+				BCB4E3C1EF0973B713C9ECA2 /* Pods-IGDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1178695525F73A3D00599FAC /* Build configuration list for PBXNativeTarget "IGDemo" */;
 			buildPhases = (
+				2866470CC81E0D4257AB66F2 /* [CP] Check Pods Manifest.lock */,
 				1178693D25F73A3B00599FAC /* Sources */,
 				1178693E25F73A3B00599FAC /* Frameworks */,
 				1178693F25F73A3B00599FAC /* Resources */,
+				710B69C577A9E462ADEB0FE0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,6 +283,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2866470CC81E0D4257AB66F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IGDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		710B69C577A9E462ADEB0FE0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IGDemo/Pods-IGDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IGDemo/Pods-IGDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IGDemo/Pods-IGDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1178693D25F73A3B00599FAC /* Sources */ = {
@@ -415,6 +484,7 @@
 		};
 		1178695625F73A3D00599FAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49F8D033874DB2D7AEEA8E85 /* Pods-IGDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -434,6 +504,7 @@
 		};
 		1178695725F73A3D00599FAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCB4E3C1EF0973B713C9ECA2 /* Pods-IGDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
