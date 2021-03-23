@@ -6,12 +6,9 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabBarController: UITabBarController {
-    
-    //MARK: - UIComponents
-    
-    //MARK: - Properties
     
     //MARK: - Lifecycle
     
@@ -19,6 +16,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         configureViewControllers()
+        checkIfUserIsLoggedIn()
     }
     
     //MARK: - Helpers
@@ -35,16 +33,32 @@ class MainTabBarController: UITabBarController {
     private func configureViewControllers() {
         view.backgroundColor = .white
         
-        let layout = UICollectionViewFlowLayout()
+        let layout        = UICollectionViewFlowLayout()
+        let profileLayout = UICollectionViewFlowLayout()
         
         let homeNav          = templateNavigationController(unselectedImage: SFSymbols.house, selectedImage: SFSymbols.houseFill, rootViewController: HomeVC(collectionViewLayout: layout))
         let searchNav        = templateNavigationController(unselectedImage: SFSymbols.search, selectedImage: SFSymbols.search, rootViewController: SearchVC())
         let imageSelectorNav = templateNavigationController(unselectedImage: SFSymbols.add, selectedImage: SFSymbols.addFill, rootViewController: ImageSelectorVC())
         let notificationNav  = templateNavigationController(unselectedImage: SFSymbols.heart, selectedImage: SFSymbols.heartFill, rootViewController: NotificationVC())
-        let profileNav       = templateNavigationController(unselectedImage: SFSymbols.person, selectedImage: SFSymbols.personFill, rootViewController: ProfileVC())
+        
+        let profileNav       = templateNavigationController(unselectedImage: SFSymbols.person, selectedImage: SFSymbols.personFill, rootViewController: ProfileVC(collectionViewLayout: profileLayout))
         
         viewControllers  = [homeNav, searchNav, imageSelectorNav, notificationNav, profileNav]
         tabBar.tintColor = .black
+    }
+    
+    //MARK: - API
+    
+    private func checkIfUserIsLoggedIn() {
+        
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let destVC = LoginVC()
+                let nav = UINavigationController(rootViewController: destVC)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
+        }
     }
     
 }

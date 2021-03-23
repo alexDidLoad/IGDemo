@@ -102,7 +102,18 @@ class LoginVC: UIViewController {
     
     
     @objc private func didTapLogin() {
-        print("didTapLogin")
+        guard let email    = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        AuthService.logUserIn(withEmail: email, password: password) { [weak self] result, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                print("DEBUG: Failed to log user in \(error.localizedDescription)")
+            }
+            
+            self.dismiss(animated: true)
+        }
     }
     
     

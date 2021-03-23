@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeVC: UICollectionViewController {
     
@@ -17,7 +18,7 @@ class HomeVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         configureUI()
     }
     
@@ -26,9 +27,27 @@ class HomeVC: UICollectionViewController {
     private func configureUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.reuseID)
+        
+        let attributes       = [ NSAttributedString.Key.font : UIFont(name: "Snell Roundhand Black", size: 24)!]
+        navigationItem.title = "Instagram"
+
+        navigationController?.navigationBar.titleTextAttributes = attributes
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(handleLogout))
     }
     
     //MARK: - Selectors
+    
+    @objc private func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+            let destVC = LoginVC()
+            let nav = UINavigationController(rootViewController: destVC)
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true)
+        } catch {
+            print("DEBUG: Failed to sign out")
+        }
+    }
     
 }
 

@@ -40,6 +40,7 @@ class RegisterVC: UIViewController {
     //MARK: - Properties
     
     private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
     
     //MARK: - Lifecycle
     
@@ -121,7 +122,28 @@ class RegisterVC: UIViewController {
     
     
     @objc private func didTapSignup() {
-        print("didTapSignup")
+        
+        guard let email        = emailTextField.text else { return }
+        guard let password     = passwordTextField.text else { return }
+        guard let fullname     = fullnameTextField.text else { return }
+        guard let username     = usernameTextField.text?.lowercased() else { return }
+        guard let profileImage = profileImage else { return }
+        
+        let credentials = AuthCredentials(email: email, password: password,
+                                          fullname: fullname, username: username,
+                                          profileImage: profileImage)
+        
+        AuthService.registerUser(withCredentials: credentials) { [weak self] error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                print("DEBUG: Failed to register user \(error.localizedDescription)")
+                return
+            }
+            
+            self.dismiss(animated: true)
+        }
+        
     }
     
     
@@ -149,6 +171,7 @@ extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDel
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage            = selectedImage
         
         profilePhotoButton.layer.cornerRadius  = profilePhotoButton.frame.width / 2
         profilePhotoButton.layer.masksToBounds = true
