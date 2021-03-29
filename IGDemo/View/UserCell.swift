@@ -36,11 +36,8 @@ class UserCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var user: User? {
-        didSet {
-            usernameLabel.text = user?.username
-            fullnameLabel.text = user?.fullname
-        }
+    var viewModel: UserCellViewModel? {
+        didSet { configure() }
     }
     
     static let reuseID = "UserCell"
@@ -60,11 +57,20 @@ class UserCell: UITableViewCell {
     
     //MARK: - Helpers
     
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        usernameLabel.text = viewModel.username
+        fullnameLabel.text = viewModel.fullname
+    }
+    
+    
     private func configureCell() {
         
         addSubview(profileImageView)
-        profileImageView.setDimensions(height: 72, width: 72)
-        profileImageView.layer.cornerRadius = 72 / 2
+        profileImageView.setDimensions(height: 68, width: 68)
+        profileImageView.layer.cornerRadius = 68 / 2
         profileImageView.centerY(inView: self,
                                  leadingAnchor: leadingAnchor,
                                  paddingLeading: 12)
@@ -78,7 +84,6 @@ class UserCell: UITableViewCell {
         stack.centerY(inView: profileImageView,
                       leadingAnchor: profileImageView.trailingAnchor,
                       paddingLeading: 8)
-    
     }
     
 }

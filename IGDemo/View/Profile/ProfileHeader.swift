@@ -22,7 +22,7 @@ class ProfileHeader: UICollectionReusableView {
     
     private let nameLabel: UILabel = {
         let label  = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         return label
     }()
     
@@ -107,6 +107,10 @@ class ProfileHeader: UICollectionReusableView {
         nameLabel.text      = viewModel.fullname
         
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        
+        editProfileFollowButton.setTitle(viewModel.followButtonText, for: .normal)
+        editProfileFollowButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+        editProfileFollowButton.backgroundColor = viewModel.followButtonBackgroundColor
     }
     
     
@@ -131,10 +135,9 @@ class ProfileHeader: UICollectionReusableView {
         profileImageView.layer.cornerRadius = 80 / 2
         
         addSubview(nameLabel)
+        nameLabel.centerX(inView: profileImageView)
         nameLabel.anchor(top: profileImageView.bottomAnchor,
-                         leading: leadingAnchor,
-                         paddingTop: 8,
-                         paddingLeading: 3)
+                         paddingTop: 8)
         
         addSubview(editProfileFollowButton)
         editProfileFollowButton.anchor(top: nameLabel.bottomAnchor,

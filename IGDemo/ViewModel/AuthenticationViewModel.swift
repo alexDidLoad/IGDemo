@@ -18,6 +18,8 @@ protocol AuthenticationViewModel {
     var buttonTitleColor      : UIColor { get }
 }
 
+//MARK: - LoginViewModel
+
 struct LoginViewModel: AuthenticationViewModel {
     
     var email    : String?
@@ -36,6 +38,8 @@ struct LoginViewModel: AuthenticationViewModel {
     }
     
 }
+
+//MARK: - RegistrationViewModel
 
 struct RegistrationViewModel: AuthenticationViewModel {
     

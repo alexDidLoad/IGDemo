@@ -8,6 +8,8 @@
 import Foundation
 import Firebase
 
+typealias FirestoreCompletion = (Error?) -> Void
+
 struct UserService {
 
     static func fetchUser(completion: @escaping(User) -> Void) {
@@ -33,6 +35,16 @@ struct UserService {
             let users      = snap.documents.map({ User(dictionary: $0.data()) })
             completion(users)
         }
+    }
+    
+    
+    static func follow(uid: String, completion: @escaping(FirestoreCompletion)) {
+        
+    }
+    
+    
+    static func unfollow(uid: String, completion: @escaping(FirestoreCompletion)) {
+        
     }
     
 }
