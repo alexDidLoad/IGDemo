@@ -6,6 +6,14 @@
 //
 
 import UIKit
+import Firebase
+
+//MARK: - API Ref
+
+let COLLECTION_USERS = Firestore.firestore().collection("users")
+
+
+//MARK: - Image Constants
 
 enum SFSymbols {
     
@@ -23,6 +31,9 @@ enum SFSymbols {
     static let send         = UIImage(systemName: "paperplane")!
     static let bookmark     = UIImage(systemName: "bookmark")!
     static let ellipsis     = UIImage(systemName: "ellipsis")!
+    static let gridFill     = UIImage(systemName: "square.grid.3x3.fill")!
+    static let list         = UIImage(systemName: "list.bullet")!
+    static let bookmarkFill = UIImage(systemName: "bookmark.fill")!
 }
 
 enum ImageAssets {

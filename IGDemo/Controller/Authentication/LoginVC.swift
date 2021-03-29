@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationComplete()
+}
+
 class LoginVC: UIViewController {
     
     //MARK: - UIComponents
@@ -42,6 +46,7 @@ class LoginVC: UIViewController {
     
     //MARK: - Properties
     
+    weak var delegate: AuthenticationDelegate?
     private var viewModel = LoginViewModel()
     
     //MARK: - Lifecycle
@@ -111,8 +116,7 @@ class LoginVC: UIViewController {
             if let error = error {
                 print("DEBUG: Failed to log user in \(error.localizedDescription)")
             }
-            
-            self.dismiss(animated: true)
+            self.delegate?.authenticationComplete()
         }
     }
     
@@ -124,6 +128,7 @@ class LoginVC: UIViewController {
     
     @objc private func didTapDontHaveAccount() {
         let destVC = RegisterVC()
+        destVC.delegate = delegate
         navigationController?.pushViewController(destVC, animated: true)
     }
 }

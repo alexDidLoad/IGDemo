@@ -39,8 +39,9 @@ class RegisterVC: UIViewController {
     
     //MARK: - Properties
     
-    private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
+    weak var delegate: AuthenticationDelegate?
+    private var viewModel = RegistrationViewModel()
     
     //MARK: - Lifecycle
     
@@ -117,7 +118,6 @@ class RegisterVC: UIViewController {
         picker.allowsEditing = true
         
         present(picker, animated: true, completion: nil)
-        
     }
     
     
@@ -141,7 +141,7 @@ class RegisterVC: UIViewController {
                 return
             }
             
-            self.dismiss(animated: true)
+            self.delegate?.authenticationComplete()
         }
         
     }

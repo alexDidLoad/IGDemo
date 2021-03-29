@@ -11,6 +11,14 @@ class ProfileCell: UICollectionViewCell {
     
     //MARK: - UIComponents
     
+    private let postImageView: UIImageView = {
+        let iv           = UIImageView()
+        iv.image         = SFSymbols.emptyPhoto
+        iv.contentMode   = .scaleAspectFill
+        iv.clipsToBounds = true
+        return iv
+    }()
+    
     
     //MARK: - Properties
     
@@ -21,7 +29,7 @@ class ProfileCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-       configureCell()
+        configureCell()
     }
     
     
@@ -33,7 +41,8 @@ class ProfileCell: UICollectionViewCell {
     
     private func configureCell() {
         
-        backgroundColor = .lightGray
+        addSubview(postImageView)
+        postImageView.fillView(self)
     }
     
 }

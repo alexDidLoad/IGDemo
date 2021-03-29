@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11162C67260AC1CD00F14DC3 /* ProfileOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11162C66260AC1CD00F14DC3 /* ProfileOptionButton.swift */; };
+		11162C8B261211D100F14DC3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11162C8A261211D100F14DC3 /* UserService.swift */; };
+		11162C8E2612134600F14DC3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11162C8D2612134600F14DC3 /* User.swift */; };
+		11162C912612175800F14DC3 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11162C902612175800F14DC3 /* ProfileHeaderViewModel.swift */; };
+		11162C94261229B100F14DC3 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11162C93261229B100F14DC3 /* UserCell.swift */; };
 		1178694525F73A3B00599FAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178694425F73A3B00599FAC /* AppDelegate.swift */; };
 		1178694725F73A3B00599FAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178694625F73A3B00599FAC /* SceneDelegate.swift */; };
 		1178695125F73A3D00599FAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178694F25F73A3D00599FAC /* LaunchScreen.storyboard */; };
@@ -36,6 +41,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11162C66260AC1CD00F14DC3 /* ProfileOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOptionButton.swift; sourceTree = "<group>"; };
+		11162C8A261211D100F14DC3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		11162C8D2612134600F14DC3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		11162C902612175800F14DC3 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		11162C93261229B100F14DC3 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1178694125F73A3B00599FAC /* IGDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IGDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178694425F73A3B00599FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1178694625F73A3B00599FAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +142,7 @@
 			children = (
 				117869CE25FA2CCA00599FAC /* ImageUploader.swift */,
 				117869D125FA2CD200599FAC /* AuthService.swift */,
+				11162C8A261211D100F14DC3 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -150,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				117869A325F86C3D00599FAC /* AuthenticationViewModel.swift */,
+				11162C902612175800F14DC3 /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -158,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				1178698625F759B300599FAC /* FeedCell.swift */,
+				11162C93261229B100F14DC3 /* UserCell.swift */,
 				117869E02601A4D400599FAC /* Profile */,
 				1178699C25F864E300599FAC /* TextFields */,
 				1178699B25F864D200599FAC /* Buttons */,
@@ -168,6 +181,7 @@
 		1178695E25F73B0700599FAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11162C8D2612134600F14DC3 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +212,7 @@
 			children = (
 				1178699525F8624F00599FAC /* AttributedTitleButton.swift */,
 				1178699825F8643300599FAC /* AuthButton.swift */,
+				11162C66260AC1CD00F14DC3 /* ProfileOptionButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -353,14 +368,18 @@
 				1178699325F85A5D00599FAC /* CustomTextField.swift in Sources */,
 				1178697225F73EC500599FAC /* SearchVC.swift in Sources */,
 				1178699F25F8669300599FAC /* UIViewController+Ext.swift in Sources */,
+				11162C8E2612134600F14DC3 /* User.swift in Sources */,
 				1178696825F73D7F00599FAC /* UIView+Ext.swift in Sources */,
+				11162C94261229B100F14DC3 /* UserCell.swift in Sources */,
 				117869CF25FA2CCA00599FAC /* ImageUploader.swift in Sources */,
 				1178698A25F76E1A00599FAC /* LoginVC.swift in Sources */,
 				117869D92601A4AE00599FAC /* ProfileCell.swift in Sources */,
+				11162C67260AC1CD00F14DC3 /* ProfileOptionButton.swift in Sources */,
 				1178696F25F73EBE00599FAC /* HomeVC.swift in Sources */,
 				117869D225FA2CD200599FAC /* AuthService.swift in Sources */,
 				117869A425F86C3D00599FAC /* AuthenticationViewModel.swift in Sources */,
 				117869DD2601A4BB00599FAC /* ProfileHeader.swift in Sources */,
+				11162C912612175800F14DC3 /* ProfileHeaderViewModel.swift in Sources */,
 				1178697B25F73EE400599FAC /* ProfileVC.swift in Sources */,
 				1178698725F759B300599FAC /* FeedCell.swift in Sources */,
 				1178697525F73ED200599FAC /* ImageSelectorVC.swift in Sources */,
@@ -369,6 +388,7 @@
 				1178694525F73A3B00599FAC /* AppDelegate.swift in Sources */,
 				1178694725F73A3B00599FAC /* SceneDelegate.swift in Sources */,
 				1178696325F73C0400599FAC /* MainTabBarController.swift in Sources */,
+				11162C8B261211D100F14DC3 /* UserService.swift in Sources */,
 				1178697825F73EDE00599FAC /* NotificationVC.swift in Sources */,
 				1178699625F8624F00599FAC /* AttributedTitleButton.swift in Sources */,
 				1178698D25F76E2B00599FAC /* RegisterVC.swift in Sources */,
@@ -514,6 +534,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 584W76NDBF;
 				INFOPLIST_FILE = IGDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -534,6 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 584W76NDBF;
 				INFOPLIST_FILE = IGDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

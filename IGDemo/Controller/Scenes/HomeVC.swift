@@ -28,10 +28,7 @@ class HomeVC: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.reuseID)
         
-        let attributes       = [ NSAttributedString.Key.font : UIFont(name: "Snell Roundhand Black", size: 24)!]
-        navigationItem.title = "Instagram"
-
-        navigationController?.navigationBar.titleTextAttributes = attributes
+        navigationItem.title             = "Instagram"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(handleLogout))
     }
     
@@ -41,6 +38,7 @@ class HomeVC: UICollectionViewController {
         do {
             try Auth.auth().signOut()
             let destVC = LoginVC()
+            destVC.delegate = self.tabBarController as? MainTabBarController
             let nav = UINavigationController(rootViewController: destVC)
             nav.modalPresentationStyle = .fullScreen
             present(nav, animated: true)
@@ -56,14 +54,12 @@ class HomeVC: UICollectionViewController {
 extension HomeVC {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return 5
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.reuseID, for: indexPath) as! FeedCell
-        
         return cell
     }
     
@@ -72,12 +68,10 @@ extension HomeVC {
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = view.frame.width
         var height = width + 8 + 40 + 8
         height += 50
         height += 60
-        
         return CGSize(width: width, height: height)
     }
     
