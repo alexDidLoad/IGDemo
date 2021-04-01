@@ -26,7 +26,6 @@ class FeedCell: UICollectionViewCell {
         let button              = UIButton(type: .system)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         button.setTitleColor(.black, for: .normal)
-        button.setTitle("User", for: .normal)
         button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
         return button
     }()
@@ -46,7 +45,6 @@ class FeedCell: UICollectionViewCell {
         iv.contentMode              = .scaleAspectFill
         iv.clipsToBounds            = true
         iv.isUserInteractionEnabled = true
-        iv.image                    = SFSymbols.emptyPhoto
         iv.backgroundColor          = .systemGray
         iv.tintColor                = .systemGreen
         return iv
@@ -91,7 +89,6 @@ class FeedCell: UICollectionViewCell {
     
     private let likesLabel: UILabel = {
         let label  = UILabel()
-        label.text = "1 like"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -99,8 +96,7 @@ class FeedCell: UICollectionViewCell {
     
     private let captionLabel: UILabel = {
         let label  = UILabel()
-        label.text = "This is a test caption...😉"
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     
@@ -118,6 +114,10 @@ class FeedCell: UICollectionViewCell {
     
     static let reuseID = "FeedCell"
     
+    var viewModel: PostViewModel? {
+        didSet { configure() }
+    }
+    
     //MARK: - Init
     
     override init(frame: CGRect) {
@@ -133,6 +133,17 @@ class FeedCell: UICollectionViewCell {
     
     
     //MARK: - Helpers
+    
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        captionLabel.text = viewModel.caption
+        likesLabel.text   = viewModel.likesLabelText
+        postedImageView.sd_setImage(with: viewModel.imageUrl)
+        profileImageView.sd_setImage(with: viewModel.userProfileImageUrl)
+        usernameButton.setTitle(viewModel.username, for: .normal)
+    }
+    
     
     private func configureCell() {
         backgroundColor = .white
@@ -195,7 +206,6 @@ class FeedCell: UICollectionViewCell {
         postTimeLabel.anchor(top: captionLabel.bottomAnchor,
                             leading: captionLabel.leadingAnchor,
                             paddingTop: 6)
-        
     }
     
     

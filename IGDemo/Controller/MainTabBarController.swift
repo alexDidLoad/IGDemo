@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import YPImagePicker
 
 class MainTabBarController: UITabBarController {
     
@@ -23,12 +24,29 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         checkIfUserIsLoggedIn()
         fetchUser()
     }
     
     //MARK: - Helpers
+    
+    private func didFinishPickingMedia(_ picker: YPImagePicker) {
+        picker.didFinishPicking { [weak self] items, _ in
+            picker.dismiss(animated: false)
+            guard let self = self else { return }
+            guard let selectedImage = items.singlePhoto?.image else { return }
+            guard let user          = self.user else { return }
+            
+            let destVC = UploadPostController(withImage: selectedImage, user: user)
+            destVC.delegate = self
+            let nav = UINavigationController(rootViewController: destVC)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: false)
+        }
+    }
+    
     
     private func templateNavigationController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewController)
@@ -41,6 +59,7 @@ class MainTabBarController: UITabBarController {
     
     private func configureViewControllers(withUser user: User) {
         view.backgroundColor = .white
+        self.delegate = self
         
         let layout           = UICollectionViewFlowLayout()
         let profile          = ProfileVC(user: user)
@@ -88,4 +107,46 @@ extension MainTabBarController: AuthenticationDelegate {
         self.dismiss(animated: true)
     }
     
+}
+
+//MARK: - UITabBarControllerDelegate
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        
+        if index == 2 {
+            //present image picker
+            var config                          = YPImagePickerConfiguration()
+            config.library.mediaType            = .photo
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen                = .library
+            config.screens                      = [.library]
+            config.hidesStatusBar               = false
+            config.hidesBottomBar               = false
+            config.library.maxNumberOfItems     = 1
+            
+            let picker = YPImagePicker(configuration: config)
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: false)
+            
+            didFinishPickingMedia(picker)
+        }
+        return true
+    }
+}
+
+//MARK: - UploadPostControllerDelegate
+
+extension MainTabBarController: UploadPostControllerDelegate {
+    
+    func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
+        selectedIndex = 0
+        controller.dismiss(animated: true)
+        
+        guard let homeNav = viewControllers?.first as? UINavigationController else { return }
+        guard let feed = homeNav.viewControllers.first as? HomeVC else { return }
+        feed.handleRefresh()
+    }
 }

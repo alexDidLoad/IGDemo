@@ -23,6 +23,9 @@ class ProfileCell: UICollectionViewCell {
     //MARK: - Properties
     
     static let reuseID = "ProfileCell"
+    var viewModel: PostViewModel? {
+        didSet { configure() }
+    }
     
     //MARK: - Init
     
@@ -38,6 +41,11 @@ class ProfileCell: UICollectionViewCell {
     }
     
     //MARK: - Helpers
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        postImageView.sd_setImage(with: viewModel.imageUrl)
+    }
     
     private func configureCell() {
         

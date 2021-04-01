@@ -18,7 +18,7 @@ class ImageSelectorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .white
     }
     
     //MARK: - Helpers
